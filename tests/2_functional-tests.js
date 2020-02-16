@@ -22,7 +22,7 @@ suite('Functional Tests', function() {
       test('Convert 10L (valid input)', function(done) {
        chai.request(server)
         .get('/api/convert')
-        .query({input: '10L'})
+        .query({input: '10l'})
         .end(function(err, res){
           assert.equal(res.status, 200);
           assert.equal(res.body.initNum, 10);

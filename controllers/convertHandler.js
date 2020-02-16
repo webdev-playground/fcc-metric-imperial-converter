@@ -11,14 +11,17 @@ function ConvertHandler() {
   
   this.getNum = function(input) {
     var result;
-    var validNumRegex = /^\d*\.?\d*(\/\d*\.?\d*)?/;
-    var unitRegex = /[a-z]$/;
+    var numRegex = /^\d*\.?\d*(\/\d*\.?\d*)?/;
+    var unitRegex = /[a-z]+$/;
+    var num = input.match(numRegex)[0];
+    var unit = input.match(unitRegex)[0];
     try {
-      var evaluation = math.evaluate(input);
-      if (evaluation.value === null) {
+      if (num + unit !== input) {
+        result = null;
+      } else if (num === '') {
         result = 1;
       } else {
-        result = evaluation.toNumber();
+        result = math.evaluate(num);
       }
     } catch(err) {
       result = null;

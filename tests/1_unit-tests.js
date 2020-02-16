@@ -17,7 +17,7 @@ suite('Unit Tests', function(){
   suite('Function convertHandler.getNum(input)', function() {
     
     test('Whole number input', function(done) {
-      var input = '32L';
+      var input = '32l';
       assert.equal(convertHandler.getNum(input),32);
       done();
     });
