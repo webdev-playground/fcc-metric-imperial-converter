@@ -35,8 +35,8 @@ suite('Unit Tests', function(){
     });
     
     test('Fractional Input w/ Decimal', function(done) {
-      var input = '32.2/1.1kg';
-      assert.equal(convertHandler.getNum(input), 32.3);
+      var input = '32.5/0.5kg';
+      assert.equal(convertHandler.getNum(input), 65);
       done();
     });
     
@@ -46,8 +46,9 @@ suite('Unit Tests', function(){
     });
     
     test('No Numerical Input', function(done) {
-      
-      //done();
+      var input = 'kg';
+      assert.equal(convertHandler.getNum(input), 1);
+      done();
     }); 
     
   });
@@ -55,7 +56,7 @@ suite('Unit Tests', function(){
   suite('Function convertHandler.getUnit(input)', function() {
     
     test('For Each Valid Unit Inputs', function(done) {
-      var input = ['gal','l','mi','km','lbs','kg','GAL','L','MI','KM','LBS','KG'];
+      var input = ['gal','l','mi','km','lbs','kg'];
       input.forEach(function(ele) {
         //assert
       });
