@@ -22,15 +22,15 @@ module.exports = function (app) {
       var initUnit = convertHandler.getUnit(input);
     
       if (initNum === null && initUnit === null) {
-        return res.json({ error: 'invalid number and unit' });
+        return res.status(400).json({ error: 'invalid number and unit' });
       }
     
       if (initNum === null) {
-        return res.json({ error: 'invalid number' });
+        return res.status(400).json({ error: 'invalid number' });
       }
     
       if (initUnit === null) {
-        return res.json({ error: 'invalid unit' });
+        return res.status(400).json({ error: 'invalid unit' });
       }
     
       var returnNum = convertHandler.convert(initNum, initUnit);

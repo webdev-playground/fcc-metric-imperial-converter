@@ -29,7 +29,7 @@ function ConvertHandler() {
     
     return result;
   };
-  
+  // 3/7.2/4kg
   this.getUnit = function(input) {
     var result;
     try {
