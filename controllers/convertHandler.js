@@ -10,13 +10,19 @@ const math = require('mathjs');
 function ConvertHandler() {
   
   this.getNum = function(input) {
-    var result = math.evaluate(input).toNumber();
+    var result;
+    math.evaluate(input).toNumber();
     
     return result;
   };
   
   this.getUnit = function(input) {
-    var result = math.evaluate(input).formatUnits();
+    var result;
+    try {
+      result = math.evaluate(input).formatUnits();
+    } catch(err) {
+      result = 'invalid unit';
+    }
     
     return result;
   };
@@ -45,7 +51,7 @@ function ConvertHandler() {
         result = 'L';
         break;
       default:
-        result = '??';
+        result = 'invalid unit';
         break;
     }
     
@@ -57,7 +63,7 @@ function ConvertHandler() {
     
     switch (unit) {
       case 'kg':
-        result = 'kilogram';
+        result = 'kilograms';
         break;
       case 'lbs':
         result = 'pounds';
@@ -75,7 +81,7 @@ function ConvertHandler() {
         result = 'gallons';
         break;
       default:
-        result = '??';
+        result = 'invalid unit';
         break;
     }
     
@@ -94,22 +100,22 @@ function ConvertHandler() {
         result = initNum / lbsToKg;
         break;
       case 'lbs':
-        result = initNum * ;
+        result = initNum * lbsToKg;
         break;
       case 'km':
-        result = 'miles';
+        result = initNum / miToKm;
         break;
       case 'mi':
-        result = 'miles';
+        result = initNum * miToKm;
         break;
       case 'L':
-        result = 'liters';
+        result = initNum / galToL;
         break;
       case 'gal':
-        result = 'gallons';
+        result = initNum * galToL;
         break;
       default:
-        result = '??';
+        result = -1;
         break;
     }
     
@@ -117,7 +123,7 @@ function ConvertHandler() {
   };
   
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
-    var result;
+    var result = `${initNum} ${this.spellOutUnit(initUnit)} converts to ${returnNum} ${this.spellOutUnit(returnUnit)}`;
     
     return result;
   };
