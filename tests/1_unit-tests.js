@@ -41,8 +41,9 @@ suite('Unit Tests', function(){
     });
     
     test('Invalid Input (double fraction)', function(done) {
-      
-      //done();
+      var input = '28/2/2kg';
+      assert.isNull(convertHandler.getNum(input));
+      done();
     });
     
     test('No Numerical Input', function(done) {
@@ -107,7 +108,7 @@ suite('Unit Tests', function(){
     
     test('L to Gal', function(done) {
       var input = [20, 'l'];
-      var expected = 4.399385;
+      var expected = 5.283457;
       assert.approximately(convertHandler.convert(input[0],input[1]),expected,0.3); //0.3 tolerance
       done();
     });

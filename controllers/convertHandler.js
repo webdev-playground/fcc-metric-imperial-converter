@@ -11,6 +11,8 @@ function ConvertHandler() {
   
   this.getNum = function(input) {
     var result;
+    var validNumRegex = /^\d*\.?\d*(\/\d*\.?\d*)?/;
+    var unitRegex = /[a-z]$/;
     try {
       var evaluation = math.evaluate(input);
       if (evaluation.value === null) {
