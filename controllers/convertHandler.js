@@ -10,7 +10,7 @@ const math = require('mathjs');
 function ConvertHandler() {
   
   this.getNum = function(input) {
-    var result;
+    var result = math.evaluate(input).toNumber();
     
     return result;
   };
