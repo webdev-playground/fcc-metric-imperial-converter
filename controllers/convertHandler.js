@@ -13,7 +13,7 @@ function ConvertHandler() {
     var result;
     try {
       var evaluation = math.evaluate(input);
-      if (parseFloat(evaluation) === NaN) {
+      if (evaluation.value === null) {
         result = 1;
       } else {
         result = evaluation.toNumber();
@@ -82,7 +82,7 @@ function ConvertHandler() {
         result = 'pounds';
         break;
       case 'km':
-        result = 'miles';
+        result = 'kilometers';
         break;
       case 'mi':
         result = 'miles';
@@ -136,7 +136,7 @@ function ConvertHandler() {
   };
   
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
-    var result = `${initNum} ${this.spellOutUnit(initUnit)} converts to ${returnNum} ${this.spellOutUnit(returnUnit)}`;
+    var result = `${initNum} ${this.spellOutUnit(initUnit)} converts to ${math.format(returnNum, { notation: 'fixed', precision: 5 })} ${this.spellOutUnit(returnUnit)}`;
     
     return result;
   };
