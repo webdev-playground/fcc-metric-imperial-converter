@@ -16,7 +16,7 @@ function ConvertHandler() {
   };
   
   this.getUnit = function(input) {
-    var result;
+    var result = math.evaluate(input).;
     
     return result;
   };
