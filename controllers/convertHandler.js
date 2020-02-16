@@ -33,7 +33,7 @@ function ConvertHandler() {
       result = null;
     }
     
-    if (!['kg', 'lbs', 'mi', 'km', 'gal', 'L'].includes(result)) {
+    if (!['kg', 'lbs', 'mi', 'km', 'gal', 'l'].includes(result)) {
       result = null;
     }
     
@@ -57,11 +57,11 @@ function ConvertHandler() {
       case 'mi':
         result = 'km';
         break;
-      case 'L':
+      case 'l':
         result = 'gal';
         break;
       case 'gal':
-        result = 'L';
+        result = 'l';
         break;
       default:
         result = null;
@@ -87,7 +87,7 @@ function ConvertHandler() {
       case 'mi':
         result = 'miles';
         break;
-      case 'L':
+      case 'l':
         result = 'liters';
         break;
       case 'gal':
@@ -121,7 +121,7 @@ function ConvertHandler() {
       case 'mi':
         result = initNum * miToKm;
         break;
-      case 'L':
+      case 'l':
         result = initNum / galToL;
         break;
       case 'gal':
