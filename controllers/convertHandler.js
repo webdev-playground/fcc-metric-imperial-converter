@@ -11,7 +11,16 @@ function ConvertHandler() {
   
   this.getNum = function(input) {
     var result;
-    math.evaluate(input).toNumber();
+    try {
+      var evaluation = math.evaluate(input);
+      if (parseFloat(evaluation) === NaN) {
+        result = 1;
+      } else {
+        result = evaluation.toNumber();
+      }
+    } catch(err) {
+      result = null;
+    }
     
     return result;
   };
@@ -21,7 +30,11 @@ function ConvertHandler() {
     try {
       result = math.evaluate(input).formatUnits();
     } catch(err) {
-      result = 'invalid unit';
+      result = null;
+    }
+    
+    if (!['kg', 'lbs', 'mi', 'km', 'gal', 'L'].includes(result)) {
+      result = null;
     }
     
     return result;
@@ -51,7 +64,7 @@ function ConvertHandler() {
         result = 'L';
         break;
       default:
-        result = 'invalid unit';
+        result = null;
         break;
     }
     
@@ -81,7 +94,7 @@ function ConvertHandler() {
         result = 'gallons';
         break;
       default:
-        result = 'invalid unit';
+        result = null;
         break;
     }
     
@@ -115,7 +128,7 @@ function ConvertHandler() {
         result = initNum * galToL;
         break;
       default:
-        result = -1;
+        result = null;
         break;
     }
     
